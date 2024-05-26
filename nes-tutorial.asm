@@ -20,6 +20,11 @@ NMI:
   RTI
 
   .bank 1
+  .org $E000
+
+background:
+  .include "graphics/background.asm"
+
   .org $FFFA
   .dw NMI
   .dw RESET
