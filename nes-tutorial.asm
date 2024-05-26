@@ -9,14 +9,23 @@
   .inesmir 1    ; Defines VRAM mirroring of banks
 
   .rsset $0000
-  pointerBackgroundLowByte  .rs 1
-  pointerBackgroundHighByte .rs 1
+pointerBackgroundLowByte  .rs 1
+pointerBackgroundHighByte .rs 1
 
   .bank 0
   .org $C000
 
 RESET:
   JSR LoadBackground
+  LDA #%10000000
+  STA $2000
+  LDA #%00011110
+  STA $2001
+  LDA #$00
+  STA $2006
+  STA $2006
+  STA $2005
+  STA $2005
 
 LoadBackground: ; Load the value #$2000 to the address $2006
   LDA $2002 ; Load $2002 to the Accumulator to reset the PPU 
